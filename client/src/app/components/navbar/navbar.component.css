@@ -1,0 +1,240 @@
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #fafafa;
+        margin-left: 80px;
+      }
+
+      .container {
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+/* Changed navbar top position */
+.navbar {
+  background: white;
+  padding: 16px 24px;
+  border-radius: 24px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 5px; /* Changed from 20px to 5px */
+  z-index: 100;
+}
+
+/* Modified search bar to extend full width */
+.search-bar {
+  flex: 1;
+  max-width: none; /* Changed from 600px to none */
+  margin: 0 24px 0 0; /* Changed from 0 24px to 0 24px 0 0 */
+  position: relative;
+}
+
+
+      .logo {
+        font-size: 24px;
+        font-weight: 600;
+        color: #e60023;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+      }
+
+
+      .search-input {
+        width: 100%;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 24px;
+        background-color: #f1f1f1;
+        font-size: 16px;
+        outline: none;
+        transition: all 0.3s ease;
+        font-family: inherit;
+      }
+
+      .search-input:focus {
+        background-color: white;
+        box-shadow: 0 0 0 3px rgba(230, 0, 35, 0.1);
+      }
+
+      .profile-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #e60023, #ff6b6b);
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .profile-avatar:hover {
+        transform: scale(1.1);
+      }
+
+      /* Sidebar Styles */
+      .sidebar {
+        width: 80px;
+        background: white;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+        z-index: 200;
+      }
+
+      .sidebar-item {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #666;
+        font-size: 20px;
+        background: transparent;
+        border: none;
+      }
+
+      .sidebar-item:hover {
+        background-color: #f0f0f0;
+        color: #e60023;
+        transform: scale(1.1);
+      }
+
+      .sidebar-item.active {
+        background-color: #e60023;
+        color: white;
+      }
+
+      .sidebar-item.settings {
+        margin-top: auto;
+        margin-bottom: 20px;
+      }
+
+      /* Main content area */
+      .main-content {
+        padding: 20px;
+      }
+
+      .content-area {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .content-area h1 {
+        font-size: 32px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 16px;
+      }
+
+      .content-area p {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .logout{
+        cursor: pointer;
+      }
+      /* Tablet styles */
+      @media (max-width: 1024px) {
+        .search-bar {
+          margin: 0 16px;
+        }
+      }
+
+      /* Mobile styles */
+      @media (max-width: 768px) {
+        body {
+          margin-left: 0;
+          margin-bottom: 60px;
+        }
+
+        .container {
+          padding: 16px;
+        }
+
+        .navbar {
+          padding: 12px 16px;
+          margin-bottom: 24px;
+          top: 16px;
+        }
+
+        .logo {
+          font-size: 20px;
+        }
+
+        .search-bar {
+          margin: 0 12px;
+        }
+
+        .search-input {
+          padding: 10px 16px;
+          font-size: 14px;
+        }
+
+        .profile-avatar {
+          width: 36px;
+          height: 36px;
+        }
+
+        .sidebar {
+          width: 100vw;
+          height: 60px;
+          flex-direction: row;
+          justify-content: space-around;
+          bottom: 0;
+          top: auto;
+          padding: 8px 0;
+        }
+
+        .sidebar-item {
+          width: 40px;
+          height: 40px;
+          margin-bottom: 0;
+          margin-right: 0;
+        }
+
+        .sidebar-item.settings {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+
+      /* Extra small mobile */
+      @media (max-width: 480px) {
+        .container {
+          padding: 12px;
+        }
+
+        .navbar {
+          padding: 10px 12px;
+          top: 12px;
+          position: sticky;
+        }
+
+        .search-bar {
+          margin: 0 8px;
+        }
+      }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pinterest Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <div class="logo">📌</div>
+      <h2>Welcome Back</h2>
+      <p class="subtitle">Log in to discover ideas and inspiration</p>
+      
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input type="text" placeholder="Username" formControlName="username" required />
+        <!-- <input type="password" placeholder="Password" required /> -->
+         <input type="password" placeholder="Password" formControlName="password" required />
+
+         <p class="form-error" *ngIf="errorMessage">{{ errorMessage }}</p>
+<div class="forgot">
+  <a href="#">Forgot password?</a>
+</div>
+
+        <button type="submit" [disabled]="loginForm.invalid || loginForm.pristine">Log In</button>
+      </form>
+      
+      <div class="divider"><span>or</span></div>
+      
+      <button class="apple-login">Sign in with Google</button>
+      <p class="signup-text">
+        New to Pinterest? <a routerLink="/register">Sign up</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

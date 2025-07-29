@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pinterest Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="register-container">
+      <div class="register-card">
+        <div class="logo">📌</div>
+        <h2>Create Your Account</h2>
+        <p class="subtitle">Start saving the ideas you love</p>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <input type="text" placeholder="Username" formControlName="username" (input)="toLowercase('username', $event)"  required />
+      <div *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid" class="form-error">
+          <small *ngIf="registerForm.get('username')?.errors?.['required']">Username is required.</small>
+          <small *ngIf="registerForm.get('username')?.errors?.['minlength']">Min 3 characters required.</small>
+          <small *ngIf="registerForm.get('username')?.errors?.['maxlength']">Max 20 characters allowed.</small>
+          <small *ngIf="registerForm.get('username')?.errors?.['pattern']">Invalid username format.</small>
+      </div>
+          <input type="email" placeholder="Email address" formControlName="email" required />
+      <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid" class="form-error">
+          <small *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</small>
+          <small *ngIf="registerForm.get('email')?.errors?.['pattern']">Please enter a valid email address.</small>
+      </div>
+
+          <input type="password" placeholder="Create password" formControlName="password" required />
+      <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid" class="form-error">
+          <small *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</small>
+          <small *ngIf="registerForm.get('password')?.errors?.['minlength']">Minimum 8 characters required.</small>
+          <small *ngIf="registerForm.get('password')?.errors?.['pattern']">
+          Password must include at least 1 uppercase, 1 lowercase, 1 number, and 1 special character.
+          </small>
+      </div>
+
+          <button type="submit" [disabled]="registerForm.invalid || registerForm.pristine">Sign Up</button>
+        </form>
+
+        <div class="divider"><span>or</span></div>
+        <button class="google-login">Continue with Google</button>
+
+        <p class="login-text">
+          Already have an account?
+          <a routerLink="/login">Log in</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

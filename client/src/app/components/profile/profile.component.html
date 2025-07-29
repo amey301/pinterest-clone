@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+
+<div class="profile-wrapper">
+  <!-- Profile Header -->
+  <div class="profile-header">
+    <img
+      src="https://i.pinimg.com/736x/87/73/c1/8773c1bdff988dddb33a4d6492266567.jpg"
+      class="avatar"
+      alt="avatar"
+    />
+    <h2>{{ userData.username }}</h2>
+    <p class="username">{{`@`+ userData.username }}</p>
+    <p class="following">1 following</p>
+
+    <div class="buttons">
+      <button>Share</button>
+      <button>Edit profile</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <span
+        class="tab"
+        [class.active]="activeTab === 'created'"
+        (click)="switchTab('created')"
+      >
+        Created
+      </span>
+      <span
+        class="tab"
+        [class.active]="activeTab === 'saved'"
+        (click)="switchTab('saved')"
+      >
+        Saved
+      </span>
+    </div>
+  </div>
+
+  <!-- Boards Grid -->
+  <div class="boards-grid">
+  <ng-container *ngIf="activeTab === 'created'">
+    <div class="board-card" *ngFor="let post of createdPosts">
+      <img [src]="'http://localhost:5000/uploads/' + post.image" alt="Post image" />
+      <!-- <p class="board-title">{{ post.title }}</p> -->
+      <!-- <p class="meta">Board: {{ post.board }}</p> -->
+      <!-- <p class="meta">Tags: {{ post.tags }}</p> -->
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="activeTab === 'saved'">
+    <div class="board-card" *ngFor="let post of savedPosts">
+      <img [src]="'http://localhost:5000/uploads/' + post.image" alt="Post image" />
+      <p class="board-title">{{ post.title }}</p>
+      <p class="meta">Board: {{ post.board }}</p>
+      <p class="meta">Tags: {{ post.tags }}</p>
+    </div>
+  </ng-container>
+</div>
+</div>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <app-navbar></app-navbar>
+<form class="upload-container" enctype="multipart/form-data" (submit)="uploadFile($event)">
+  <!-- Left Upload Box -->
+  <div class="upload-box" [class.has-preview]="previewUrl">
+    
+    <!-- Original upload content - show when no file selected -->
+    <div class="upload-content" *ngIf="!previewUrl">
+      <div class="upload-icon">
+        <i>↑</i>
+      </div>
+      <label for="fileInput">Choose a file or drag and drop<br>it here</label>
+      <p class="info">
+        We recommend using high quality .jpg files less than 20 MB or .mp4 files less than 200 MB.
+      </p>
+      <!-- <hr style="width: 100%; margin: 20px 0; border: none; border-top: 1px solid #dcdcdc;"> -->
+      <!-- <button type="button" class="url-button">Save from URL</button> -->
+    </div>
+
+    <!-- Preview content - show when file is selected -->
+    <div class="preview-container" *ngIf="previewUrl">
+      <!-- Image preview -->
+      <img *ngIf="isImage" [src]="previewUrl" class="preview-image" alt="Preview">
+      
+      <!-- Video preview -->
+      <video *ngIf="isVideo" [src]="previewUrl" class="preview-video" controls></video>
+      
+      <!-- File info and remove button -->
+      <div class="preview-overlay">
+        <div class="file-info">
+          <span class="file-name">{{ selectedFile?.name }}</span>
+          <span class="file-size">{{ (selectedFile?.size! / 1024 / 1024).toFixed(2) }} MB</span>
+        </div>
+        <button type="button" class="remove-btn" (click)="removePreview()">×</button>
+      </div>
+    </div>
+
+    <!-- File input (always present) -->
+    <input type="file" id="fileInput" (change)="onFileSelected($event)" required />
+  </div>
+
+  <!-- Right Form Fields -->
+  <div class="form-fields">
+    <input type="text" name="caption" placeholder="Add a title" [(ngModel)]="title" />
+    <!-- <textarea name="description" placeholder="Add a detailed description" [(ngModel)]="description"></textarea> -->
+    <!-- <input type="url" name="link" placeholder="Add a link" [(ngModel)]="link" /> -->
+    <select name="board" [(ngModel)]="board">
+      <option value="">Choose a board</option>
+      <option *ngFor="let b of boards" [value]="b">{{ b }}</option>
+    </select>
+    <input type="text" name="tags" placeholder="Search for a tag" [(ngModel)]="tags" />
+    <small>Don't worry, people won't see your tags</small>
+    <button>Publish</button>
+    <!-- <span class="more-options">More options ▼</span> -->
+  </div>
+</form>
+</body>
+</html>

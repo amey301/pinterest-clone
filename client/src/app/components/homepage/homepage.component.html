@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pinterest Minimal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <!-- Navbar -->
+  <app-navbar></app-navbar>
+
+  <!-- Masonry Layout -->
+  <div class="masonry">
+    <div class="card" *ngFor="let post of filteredPosts">
+      <img 
+        [src]="post.image" 
+        [alt]="post.title"
+        (error)="onImageError($event)" />
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="filteredPosts.length === 0">
+    <div class="empty-icon">🔍</div>
+    <h3>No results found</h3>
+    <p>Try searching for something else</p>
+  </div>
+</div>
+
+
+
+  
+   
+
+</body>
+</html>
+
+
+
+<!-- <div class="masonry">
+  <div class="card" *ngFor="let post of posts">
+    <img [src]="post.image" alt="Image" />
+    <div class="info">
+      <div class="title">{{ post.title }}</div>
+      <div class="desc">{{ post.desc }}</div>
+    </div>
+  </div>
+</div> -->
