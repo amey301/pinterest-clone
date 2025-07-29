@@ -1,0 +1,7 @@
+npm init -y 
+npm i mongoose express
+npm i express-list-endpoints
+npm i passport passport-local passport-local-mongoose express-
+1. use app.use(expressSession())
+npm i uuid multer
+
